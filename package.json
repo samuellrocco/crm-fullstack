@@ -1,0 +1,13 @@
+{
+  "name": "crm-fullstack",
+  "version": "1.0.0",
+  "description": "CRM de clientes e vendas - fullstack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
