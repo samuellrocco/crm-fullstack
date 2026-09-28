@@ -17,16 +17,16 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // ---------- camada de dados ----------
 function lerDB() {
-  const raw = fs.readFileSync(DB_PATH, "utf-8");
-  return JSON.parse(raw);
+  if (!fs.existsSync(DB_PATH)) {
+    fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+    fs.writeFileSync(DB_PATH, JSON.stringify({ clientes: [], negocios: [] }, null, 2));
+  }
+  return JSON.parse(fs.readFileSync(DB_PATH, "utf-8"));
 }
 function salvarDB(db) {
+  fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
   fs.writeFileSync(DB_PATH, JSON.stringify(db, null, 2));
 }
-function uid() {
-  return crypto.randomBytes(6).toString("hex");
-}
-
 // ---------- rotas: clientes ----------
 app.get("/api/clientes", (req, res) => {
   const db = lerDB();
