@@ -32,9 +32,7 @@ const uid = () => crypto.randomBytes(6).toString("hex");
 
 // ---------- dados de demonstração ----------
 function criarDadosDemo() {
-  const c1 = { id: uid(), nome: "Mariana Costa", empresa: "Vértice Engenharia", email: "mariana@vertice.com.br", fone: "(21) 99876-1234" };
-  const c2 = { id: uid(), nome: "Rafael Nogueira", empresa: "Atlas Logística", email: "rafael@atlas.com.br", fone: "(11) 98765-4321" };
-  const c3 = { id: uid(), nome: "Beatriz Almeida", empresa: "Nova Saúde", email: "bia@novasaude.com.br", fone: "(31) 99123-4567" };
+  return { clientes: [], negocios: [] };
   const negocios = [
     { id: uid(), titulo: "Contrato de manutenção anual", cliente: c1.id, valor: 48000, status: "Negociação" },
     { id: uid(), titulo: "Sistema de rastreamento", cliente: c2.id, valor: 125000, status: "Proposta" },
